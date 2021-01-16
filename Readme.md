@@ -1,27 +1,50 @@
-# DEVOPS HANDMADE CHALLENGE 
+# Terraform Flux Istio
 
-## Ground Rules
-We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time, if you need it. A rushed job is usually matched by a swift rejection.
+This repository is just a way for practice with Terraform and TerraGrunt in order to deploy a gke cluster and test many concept of GitOps for apps/services environment with Fluxcd.
 
-Submission is done via a git format-patch. 
+## Introduction Scenario 
+Acme, to dispose at well their solutions to the customers want to catch [bepbep](https://media.tenor.com/images/6e397fc371f5a93468c18cfc01e4bbaf/tenor.gif), has several environments (prod, staging and dev) entirely separated.
 
-## Context
+The infrastructure in each environment consists of multiple layers (gke, flux, vpc, ...) where each layer is configured using one of Terraform modules with arguments specified in `terragrunt.hcl` in layer's directory.
 
-We have outsourced this application development to an external company. The application contains the following features:
+Terragrunt is used to work with Terraform configurations which allows orchestrating of dependent layers, update arguments dynamically and keep configurations DRY.
 
-Member sign up/sign in
-Download documents
-The application was developed using Rust.
 
-The application requires a database for storing data. Use PostgreSQL, and support HA (high availability).
+## Prerequisites
 
-## Problem
+- Google Cloud Project
 
-As an architect, you decide to deploy the application using Kubernetes and use PostgreSQL as the database.
+- [Terraform 0.12](https://www.terraform.io/intro/getting-started/install.html)
+- [Terragrunt 0.22 or newer](https://terragrunt.gruntwork.io/docs/getting-started/install/)
+- [Terraform Docs](https://github.com/segmentio/terraform-docs)
 
-## Instructions
+If you are using macOS you can install all dependencies using [Homebrew](https://brew.sh/):
 
-Write scripts and yaml files, in order to run this application on a Kubernetes cluster, i.e. Helm charts or Kubernetes manifests.
-Write scripts and yaml files, in order to setup PostgreSQL inside a Kubernetes cluster, optionally in High Availability mode, i.e. Patroni/Spilo with master/slave.
-You may need to modify the application source code or configuration in order to make the application running on Kubernetes cluster, e.g. make use ENV variables in 12Factor style, create Dockerfile.
-You have to write documentation and/or instructions about what you have done. This documents must detail steps for other DevOps to understand how to deploy this application and maintain it.
+    $ brew install terraform terragrunt pre-commit
+
+
+
+### Project Structure
+
+- `manifests` contains deployment manifest files e.g. kustomize, helm, k8s manifests.
+   - app and service, example: podinfo service deployment manifests
+- `stages` contains Terragrunt and Terraform configurations for each environment.
+   - demo example environment contains module inputs
+- `modules` contains reusable Terraform modules.
+   - flux module for FluxCD and Helm operator
+   - gke module to provision Kubernetes Engine and all resources needed by the cluster
+
+## Quick start for create and managing your infrastructure
+ After you've create a google service account, with the min permissions for manage and create via api the cluster. You have to Navigate through layers in `demo` .hcl files in order to review and customize values inside `inputs` block or values in env file.
+ - After that, **Run this command to create infrastructure in all layers in a single region:**
+```
+$ cd stages/acme-demo/
+$ terragrunt apply-all
+```
+
+
+## References
+
+* [Terraform documentation](https://www.terraform.io/docs/) and [Terragrunt documentation](https://terragrunt.gruntwork.io/docs/) for all available commands and features.
+* [Terraform AWS modules](https://github.com/terraform-aws-modules/).
+* [Terraform modules registry](https://registry.terraform.io/).
