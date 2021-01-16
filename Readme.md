@@ -1,4 +1,4 @@
-# Terraform Flux Istio
+# Terraform Gke Flux Walkthrough
 
 This repository is just a way for practice with Terraform and TerraGrunt in order to deploy a gke cluster and test many concept of GitOps for apps/services environment with Fluxcd.
 

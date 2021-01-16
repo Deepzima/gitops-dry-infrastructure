@@ -5,6 +5,7 @@
 
 # Terragrunt
 .terragrunt-cache
+.terraform.lock.hcl
 
 # OS X
 .history
