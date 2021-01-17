@@ -54,7 +54,6 @@ variable "zones" {
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
 
-
 # For the example, we recommend a /16 network for the VPC. Note that when changing the size of the network,
 # you will have to adjust the 'cidr_subnetwork_width_delta' in the 'vpc_network' -module accordingly.
 variable "vpc_cidr_block" {
@@ -95,11 +94,13 @@ variable "cluster_service_account_description" {
   default     = "Example GKE Cluster Service Account managed by Terraform"
 }
 
-variable "master_authorized_networks" {
-  type        = list(object({ cidr_block = string, display_name = string }))
-  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
-  default     = []
+# ------ Kubectl options
+variable "kubectl_config_path" {
+  description = "Path to the kubectl config file. Defaults to $HOME/.kube/config"
+  default     = ""
 }
+
+
 
 # ------ VARS FOR BASIC AUTH
 
@@ -181,6 +182,12 @@ variable "network_policy" {
   type        = bool
   description = "Enable network policy addon"
   default     = true
+}
+
+variable "master_authorized_networks" {
+  type        = list(object({ cidr_block = string, display_name = string }))
+  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
+  default     = []
 }
 
 variable "master_authorized_networks_config" {
