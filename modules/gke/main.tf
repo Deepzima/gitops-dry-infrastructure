@@ -82,7 +82,7 @@ module "gke_cluster" {
   # to a specific version of the modules, such as the following example:
   source = "github.com/gruntwork-io/terraform-google-gke.git//modules/gke-cluster?ref=v0.7.0"
 
-  name = local.cluster_name
+  name        = local.cluster_name
   description = var.description
 
   project  = var.project
@@ -94,7 +94,7 @@ module "gke_cluster" {
   # https://github.com/gruntwork-io/terraform-google-network/tree/master/modules/vpc-network#access-tier
   subnetwork = module.vpc_network.public_subnetwork
 
-  logging_service =  var.logging_service
+  logging_service    = var.logging_service
   monitoring_service = var.monitoring_service
 
   # When creating a private cluster, the 'master_ipv4_cidr_block' has to be defined and the size must be /28
@@ -122,16 +122,15 @@ module "gke_cluster" {
   ]
 
   cluster_secondary_range_name = module.vpc_network.public_subnetwork_secondary_range_name
-  
-  horizontal_pod_autoscaling   = var.enable_horizontal_pod_autoscaling
+
+  horizontal_pod_autoscaling = var.enable_horizontal_pod_autoscaling
   #vertical_pod_autoscaling   = var.enable_vertical_pod_autoscaling
 
-  maintenance_start_time = var.maintenance_start_time
+  maintenance_start_time   = var.maintenance_start_time
   enable_workload_identity = var.enable_workload_identity
 
-
   resource_labels = {
-    environment = "testing"
+    environment = var.environment
   }
 
 }
