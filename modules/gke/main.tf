@@ -178,9 +178,12 @@ resource "google_container_node_pool" "node_pool" {
     image_type   = lookup(each.value, "image_type", "COS")
     machine_type = lookup(each.value, "machine_type", "n1-standard-2")
 
-    labels = {
-      private-pools-example = "true"
-    }
+    labels = merge(
+      lookup(lookup(local.node_pools_labels, "default_values", {}), "cluster_name", true) ? { "cluster_name" = var.name } : {},
+      lookup(lookup(local.node_pools_labels, "default_values", {}), "node_pool", true) ? { "node_pool" = each.value["name"] } : {},
+      local.node_pools_labels["all"],
+      local.node_pools_labels[each.value["name"]],
+    )
 
     # Add a private tag to the instances. See the network access tier table for full details:
     # https://github.com/gruntwork-io/terraform-google-network/tree/master/modules/vpc-network#access-tier
@@ -243,9 +246,9 @@ resource "null_resource" "configure_kubectl" {
 
     # Use environment variables to allow custom kubectl config paths
     environment = {
-      KUBECONFIG = "${var.kubectl_config_path != "" ? "${var.kubectl_config_path}" : ""}"
+      KUBECONFIG = var.kubectl_config_path != "" ? var.kubectl_config_path : ""
     }
   }
 
-  depends_on = ["google_container_node_pool.node_pool"]
+  depends_on = [google_container_node_pool.node_pool]
 }
