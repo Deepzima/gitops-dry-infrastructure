@@ -46,5 +46,4 @@ $ terragrunt apply-all
 ## References
 
 * [Terraform documentation](https://www.terraform.io/docs/) and [Terragrunt documentation](https://terragrunt.gruntwork.io/docs/) for all available commands and features.
-* [Terraform AWS modules](https://github.com/terraform-aws-modules/).
 * [Terraform modules registry](https://registry.terraform.io/).
