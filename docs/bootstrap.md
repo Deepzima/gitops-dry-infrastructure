@@ -14,6 +14,7 @@ Afther that you need to create a Service Account and assign following roles and 
   - Compute Admin
   - Service Account User
 
+
 ### Create the service account:
 ```
 gcloud iam service-accounts create kindone-automation \
@@ -59,5 +60,5 @@ Paste the public key into the key textarea and check Allow write access.
 
 
 ## Update Terraform Inputs
-Change `project` and `region` in live/demo/env.hcl to your gcp project name and region where you want to deploy the infrastructure. 
+Change `project` and `region` in stages/demo/env.hcl to your gcp project name and region where you want to deploy the infrastructure. 
 Or if you prefer, just have to replicate the demo folder with another name and others paramenters
