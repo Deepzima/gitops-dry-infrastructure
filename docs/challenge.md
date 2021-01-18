@@ -1,31 +1,27 @@
-# DEVOPS HANDMADE CHALLENGE 
+# Talented DevOps Challenge
 
-This project is a game challenge that I've found in Omise Github channel, I've stoled and adapted for enjoying myself in the scenario proposed and bettering my best practices in cloud technologies. 
+## The situation
 
-I want to use Rust like environment because.. why not.
+A customer is eager to migrate its workload from a traditional approach to a __Cloud Native__ one embracing the DevOps methodology at its best.
 
-## Ground Rules
-We prefer well-thought-out solutions over the quick-and-dirty kind. So take your time, if you need it. A rushed job is usually matched by a swift rejection.
+This customer is offering a Software as a Service made of a set of web applications and databases (e.g.: __CRM__) and would like to enforce the network segregation between customers.
 
-Submission is done via a git format-patch. 
+Furthermore, it would like to automate the onboarding of new end-users without the need of dealing with APIs and having a single source of truth.
 
-## Context
+### Kubernetes Managed
 
-We have outsourced this application development to an external company. The application contains the following features:
+The customer would like to use Kubernetes in a managed way: there is no constraint on the infrastructure provider, the single prerequisite is an installation using the IaC (infrastructure as code) approach.
 
-Member sign up/sign in
-Download documents
-The application was developed using Rust.
+### Application
 
-The application requires a database for storing data. Use PostgreSQL, and support HA (high availability).
+As code challenge, we're not providing an example code base but this can be easily any application, as [podinfo](https://github.com/stefanprodan/podinfo) or any blog as Ghost, or WordPress.
 
-## Problem
+### Document it
 
-As an architect, you decide to deploy the application using Kubernetes and use PostgreSQL as the database.
+The customer is expecting documentation on how to manage the whole infrastructure as well as installing it: you have to document all the needed steps.
 
-## Instructions
+## Delivery
 
-Write scripts and yaml files, in order to run this application on a Kubernetes cluster, i.e. Helm charts or Kubernetes manifests.
-Write scripts and yaml files, in order to setup PostgreSQL inside a Kubernetes cluster, optionally in High Availability mode, i.e. Patroni/Spilo with master/slave.
-You may need to modify the application source code or configuration in order to make the application running on Kubernetes cluster, e.g. make use ENV variables in 12Factor style, create Dockerfile.
-You have to write documentation and/or instructions about what you have done. This documents must detail steps for other DevOps to understand how to deploy this application and maintain it.
+Just raise your PR against this repository, documenting all the changes.
+
+We evaluate all best practices regarding contributions (e.g. commit subjects and body): it's an exclusive asynchronous task, we should be able to evaluate all your skills without dealing with you directly.
