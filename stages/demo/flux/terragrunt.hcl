@@ -21,10 +21,11 @@ inputs = {
   flux_chart_version                = "1.5.0"
   flux_helm_operator_chart_version  = "1.2.0"
   flux_garbage_collection_enabled   = "true"
-  create_crd                        = "v3"
+  create_crd                        = "true"
+  helm_version                      = "v3"
   flux_git_repo                     = "git@github.com:Deepzima/gitops-dry-infrastructure.git"
-  flux_git_branch                   = "master"
-  flux_git_path                     = ["mainfests", "mainfests/app", "manifests/podinfo"]
+  flux_git_branch                   = "main"
+  flux_git_path                     = ["manifests/podinfo"]
   flux_git_poll_interval            = "2m"
   flux_git_timeout                  = "1m"
 }
