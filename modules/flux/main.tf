@@ -108,10 +108,10 @@ resource "helm_release" "helm_operator" {
   version = var.flux_helm_operator_chart_version
   wait    = true
 
-  set {
-    name  = "createCRD"
-    value = var.create_crd
-  }
+  # set {
+  #   name  = "createCRD"
+  #   value = var.create_crd
+  # }
 
   set {
     name  = "helm.versions"

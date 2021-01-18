@@ -8,5 +8,8 @@ terraform {
   required_providers {
     google      = "= 3.25.0"
     google-beta = "~> 3.43.0"
+    null = {
+      source = "hashicorp/null"
+    }
   }
 }

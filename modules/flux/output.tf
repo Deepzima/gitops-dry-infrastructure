@@ -3,7 +3,7 @@ output "public_key_openssh" {
 }
 
 output "private_key_pem" {
-  sensitive = true
+  # sensitive = true
   value     = tls_private_key.flux.private_key_pem
 }
 

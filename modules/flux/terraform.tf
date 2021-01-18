@@ -22,13 +22,13 @@ provider "kubernetes" {
   load_config_file       = false
   host                   = var.cluster_endpoint
   token                  = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  cluster_ca_certificate = var.cluster_ca_certificate
 }
 
 provider "kubernetes-alpha" {
   host                   = "https://${var.cluster_endpoint}"
   token                  = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+  cluster_ca_certificate = var.cluster_ca_certificate
 }
 
 provider "helm" {
@@ -36,7 +36,7 @@ provider "helm" {
 
     host                   = var.cluster_endpoint
     token                  = data.google_client_config.default.access_token
-    cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
+    cluster_ca_certificate = var.cluster_ca_certificate
   }
 }
 
