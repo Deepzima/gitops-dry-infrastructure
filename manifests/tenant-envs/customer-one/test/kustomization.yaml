@@ -1,5 +1,5 @@
 
-namespace: one-test
+namespace: customer-one-test
 
 bases:
 - ../../../plans/paid
