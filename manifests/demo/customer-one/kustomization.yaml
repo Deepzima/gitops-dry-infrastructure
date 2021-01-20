@@ -6,3 +6,4 @@ resources:
   - podinfo-svc.yaml
 patchesStrategicMerge:
   - flux-patch.yaml
+namePrefix: customer-one-
