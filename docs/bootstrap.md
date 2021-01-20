@@ -29,7 +29,7 @@ gcloud iam service-accounts keys create \
   --iam-account ${PROJECT}-automation@${PROJECT}.iam.gserviceaccount.com
 ```
 ### Activate the Service Account 
-Now you have to activate the service or export the kay for the console, in follow:
+Now you have to activate the service or export the key for the console, in follow:
 ```
 $ export GOOGLE_APPLICATION_CREDENTIALS=~/.config/gcloud/application_default_credentials.json
 ```

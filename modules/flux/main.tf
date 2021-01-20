@@ -76,6 +76,12 @@ resource "helm_release" "fluxcd" {
     value = var.flux_git_timeout
   }
 
+    set {
+    name  = "manifestGeneration"
+    value = "true"
+  }
+
+
   set {
     name  = "git.secretName"
     value = kubernetes_secret.flux_git_deploy.metadata[0].name
