@@ -5,5 +5,3 @@ bases:
 # - ../../tenant-envs/two/prod
 commonLabels:
   example.com/region: eu
-patchesStrategicMerge:
-  - flux-patch.yaml
