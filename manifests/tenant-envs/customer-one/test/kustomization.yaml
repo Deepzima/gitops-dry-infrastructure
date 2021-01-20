@@ -5,7 +5,7 @@ bases:
 - ../../../bases/app
 
 commonLabels:
-  app.kubernetes.io/instance: tenant-one
+  app.kubernetes.io/instance: tenant-one-test
   example.com/stage: customer-one-test
 
 resources:
