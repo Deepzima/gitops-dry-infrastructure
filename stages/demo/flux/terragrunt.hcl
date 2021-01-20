@@ -24,8 +24,8 @@ inputs = {
   create_crd                        = "true"
   helm_version                      = "v3"
   flux_git_repo                     = "git@github.com:Deepzima/gitops-dry-infrastructure.git"
-  flux_git_branch                   = "main"
-  flux_git_path                     = ["manifests/podinfo"]
+  flux_git_branch                   = "demo"
+  flux_git_path                     = ["manifests/demo"]
   flux_git_poll_interval            = "2m"
   flux_git_timeout                  = "1m"
 }

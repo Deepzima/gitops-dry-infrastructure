@@ -1,0 +1,7 @@
+namespace: customer-one
+resources:
+  - namespace.yaml
+bases:
+  - ../base/
+patchesStrategicMerge:
+  - flux-patch.yaml
