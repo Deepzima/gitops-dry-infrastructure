@@ -1,7 +1,8 @@
 namespace: customer-one
 resources:
   - namespace.yaml
-bases:
-  - ../base/
+  - podinfo-dep.yaml
+  - podinfo-hpa.yaml
+  - podinfo-svc.yaml
 patchesStrategicMerge:
   - flux-patch.yaml
