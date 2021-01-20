@@ -3,6 +3,7 @@ kind: Kustomization
 bases:
 - ../tenant-envs/customer-one/prod
 - ../tenant-envs/customer-two/prod
+
 # - ../../tenant-envs/two/prod
 commonLabels:
   example.com/region: eu

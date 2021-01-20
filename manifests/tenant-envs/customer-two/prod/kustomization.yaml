@@ -4,7 +4,7 @@ bases:
 - ../../../bases/app
 
 commonLabels:
-  app.kubernetes.io/instance: tenant-two
+  app.kubernetes.io/instance: tenant-two-prod
   example.com/stage: customer-two-prod
 resources:
 - namespace.yaml
