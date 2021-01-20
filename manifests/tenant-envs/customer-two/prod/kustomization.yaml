@@ -1,0 +1,10 @@
+
+namespace: customer-one-prod
+bases:
+- ../../../bases/app
+
+commonLabels:
+  app.kubernetes.io/instance: tenant-one
+  example.com/stage: customer-one-prod
+resources:
+- namespace.yaml
